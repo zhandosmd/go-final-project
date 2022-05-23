@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/jmoiron/sqlx"
-	todo "github.com/zhandosmd/golang-todo"
+	todo "github.com/zhandosmd/go-final-project"
 )
 
 type AuthPostgres struct {

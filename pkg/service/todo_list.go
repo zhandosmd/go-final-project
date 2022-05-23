@@ -1,8 +1,8 @@
 package service
 
 import (
-	todo "github.com/zhandosmd/golang-todo"
-	"github.com/zhandosmd/golang-todo/pkg/repository"
+	todo "github.com/zhandosmd/go-final-project"
+	"github.com/zhandosmd/go-final-project/pkg/repository"
 )
 
 type TodoListService struct {
@@ -22,4 +22,16 @@ func (s *TodoListService) Update(userId, listId int, input todo.UpdateListInput)
 		return err
 	}
 	return s.repo.Update(userId, listId, input)
+}
+
+func (s *TodoListService) GetAll(userId int) ([]todo.TodoList, error) {
+	return s.repo.GetAll(userId)
+}
+
+func (s *TodoListService) GetById(userId, listId int) (todo.TodoList, error) {
+	return s.repo.GetById(userId, listId)
+}
+
+func (s *TodoListService) Delete(userId, listId int) error {
+	return s.repo.Delete(userId, listId)
 }

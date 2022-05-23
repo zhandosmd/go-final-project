@@ -8,10 +8,10 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"github.com/spf13/viper"
-	todo "github.com/zhandosmd/golang-todo"
-	"github.com/zhandosmd/golang-todo/pkg/handler"
-	"github.com/zhandosmd/golang-todo/pkg/repository"
-	"github.com/zhandosmd/golang-todo/pkg/service"
+	todo "github.com/zhandosmd/go-final-project"
+	"github.com/zhandosmd/go-final-project/pkg/handler"
+	"github.com/zhandosmd/go-final-project/pkg/repository"
+	"github.com/zhandosmd/go-final-project/pkg/service"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	todo "github.com/zhandosmd/golang-todo"
+	todo "github.com/zhandosmd/go-final-project"
 )
 
 func (h *Handler) signUp(c *gin.Context) {
