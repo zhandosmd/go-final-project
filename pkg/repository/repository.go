@@ -2,34 +2,30 @@ package repository
 
 import (
 	"github.com/jmoiron/sqlx"
-	todo "github.com/zhandosmd/go-final-project"
+	lofo "github.com/zhandosmd/go-final-project"
 )
 
 type Authorization interface {
-	CreateUser(User todo.User) (int, error)
-	GetUser(username, password string) (todo.User, error)
+	CreateUser(User lofo.User) (int, error)
+	GetUser(username, password string) (lofo.User, error)
 }
 
-type TodoList interface {
-	Create(userId int, list todo.TodoList) (int, error)
-	GetAll(userId int) ([]todo.TodoList, error)
-	GetById(userId, listId int) (todo.TodoList, error)
+type Lofo interface {
+	Create(userId int, list lofo.Lofo) (int, error)
+	GetAll(userId int) ([]lofo.Lofo, error)
+	GetById(userId, listId int) (lofo.Lofo, error)
 	Delete(userId, listId int) error
-	Update(userId, listId int, input todo.UpdateListInput) error
-}
-
-type TodoItem interface {
+	Update(userId, listId int, input lofo.UpdateListInput) error
 }
 
 type Repository struct {
 	Authorization
-	TodoList
-	TodoItem
+	Lofo
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthPostgres(db),
-		TodoList:      NewTodoListPostgres(db),
+		Lofo:          NewTodoListPostgres(db),
 	}
 }

@@ -1,35 +1,35 @@
 package service
 
 import (
-	todo "github.com/zhandosmd/go-final-project"
+	lofo "github.com/zhandosmd/go-final-project"
 	"github.com/zhandosmd/go-final-project/pkg/repository"
 )
 
-type TodoListService struct {
-	repo repository.TodoList
+type LofoService struct {
+	repo repository.Lofo
 }
 
-func NewTodoListService(repo repository.TodoList) *TodoListService {
-	return &TodoListService{repo: repo}
+func NewTodoListService(repo repository.Lofo) *LofoService {
+	return &LofoService{repo: repo}
 }
 
-func (s *TodoListService) Create(userId int, list todo.TodoList) (int, error) {
+func (s *LofoService) Create(userId int, list lofo.Lofo) (int, error) {
 	return s.repo.Create(userId, list)
 }
 
-func (s *TodoListService) GetAll(userId int) ([]todo.TodoList, error) {
+func (s *LofoService) GetAll(userId int) ([]lofo.Lofo, error) {
 	return s.repo.GetAll(userId)
 }
 
-func (s *TodoListService) GetById(userId, listId int) (todo.TodoList, error) {
+func (s *LofoService) GetById(userId, listId int) (lofo.Lofo, error) {
 	return s.repo.GetById(userId, listId)
 }
 
-func (s *TodoListService) Delete(userId, listId int) error {
+func (s *LofoService) Delete(userId, listId int) error {
 	return s.repo.Delete(userId, listId)
 }
 
-func (s *TodoListService) Update(userId, listId int, input todo.UpdateListInput) error {
+func (s *LofoService) Update(userId, listId int, input lofo.UpdateListInput) error {
 	if err := input.Validate(); err != nil {
 		return err
 	}

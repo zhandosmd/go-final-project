@@ -8,7 +8,7 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"github.com/spf13/viper"
-	todo "github.com/zhandosmd/go-final-project"
+	lofo "github.com/zhandosmd/go-final-project"
 	"github.com/zhandosmd/go-final-project/pkg/handler"
 	"github.com/zhandosmd/go-final-project/pkg/repository"
 	"github.com/zhandosmd/go-final-project/pkg/service"
@@ -40,7 +40,7 @@ func main() {
 	services := service.NewService(repos)
 	handlers := handler.NewHandler(services)
 
-	srv := new(todo.Server)
+	srv := new(lofo.Server)
 	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
 		log.Fatalf("error occured while running http server: %s", err.Error())
 	}

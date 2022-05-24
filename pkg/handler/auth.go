@@ -4,11 +4,11 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	todo "github.com/zhandosmd/go-final-project"
+	lofo "github.com/zhandosmd/go-final-project"
 )
 
 func (h *Handler) signUp(c *gin.Context) {
-	var input todo.User
+	var input lofo.User
 
 	if err := c.BindJSON(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())

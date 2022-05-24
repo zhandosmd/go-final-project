@@ -10,19 +10,19 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/magiconair/properties/assert"
 
-	todo "github.com/zhandosmd/go-final-project"
+	lofo "github.com/zhandosmd/go-final-project"
 	"github.com/zhandosmd/go-final-project/pkg/service"
 	mocks "github.com/zhandosmd/go-final-project/pkg/service/mocks"
 )
 
 func TestHandler_signUp(t *testing.T) {
 	// Init Test Table
-	type mockBehavior func(r *mocks.MockAuthorization, user todo.User)
+	type mockBehavior func(r *mocks.MockAuthorization, user lofo.User)
 
 	tests := []struct {
 		name                 string
 		inputBody            string
-		inputUser            todo.User
+		inputUser            lofo.User
 		mockBehavior         mockBehavior
 		expectedStatusCode   int
 		expectedResponseBody string
@@ -30,12 +30,12 @@ func TestHandler_signUp(t *testing.T) {
 		{
 			name:      "Ok",
 			inputBody: `{"username": "person", "name": "person name", "password": "qwerty123"}`,
-			inputUser: todo.User{
+			inputUser: lofo.User{
 				Username: "username",
 				Name:     "Test Name",
 				Password: "qwerty",
 			},
-			mockBehavior: func(r *mocks.MockAuthorization, user todo.User) {
+			mockBehavior: func(r *mocks.MockAuthorization, user lofo.User) {
 				r.EXPECT().CreateUser(user).Return(1, nil)
 			},
 			expectedStatusCode:   200,
@@ -44,20 +44,20 @@ func TestHandler_signUp(t *testing.T) {
 		{
 			name:                 "Wrong Input",
 			inputBody:            `{"username": "person"}`,
-			inputUser:            todo.User{},
-			mockBehavior:         func(r *mocks.MockAuthorization, user todo.User) {},
+			inputUser:            lofo.User{},
+			mockBehavior:         func(r *mocks.MockAuthorization, user lofo.User) {},
 			expectedStatusCode:   400,
 			expectedResponseBody: `{"message":"invalid input body"}`,
 		},
 		{
 			name:      "Service Error",
 			inputBody: `{"username": "person", "name": "person name", "password": "qwerty123"}`,
-			inputUser: todo.User{
+			inputUser: lofo.User{
 				Username: "username",
 				Name:     "Test Name",
 				Password: "qwerty123",
 			},
-			mockBehavior: func(r *mocks.MockAuthorization, user todo.User) {
+			mockBehavior: func(r *mocks.MockAuthorization, user lofo.User) {
 				r.EXPECT().CreateUser(user).Return(0, errors.New("something went wrong"))
 			},
 			expectedStatusCode:   500,
