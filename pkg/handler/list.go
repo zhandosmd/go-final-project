@@ -8,10 +8,6 @@ import (
 	todo "github.com/zhandosmd/go-final-project"
 )
 
-type getAllListsResponse struct {
-	Data []todo.TodoList `json:"data"`
-}
-
 func (h *Handler) createList(c *gin.Context) {
 	userId, err := getUserId(c)
 
@@ -35,6 +31,10 @@ func (h *Handler) createList(c *gin.Context) {
 	c.JSON(http.StatusOK, map[string]interface{}{
 		"id": id,
 	})
+}
+
+type getAllListsResponse struct {
+	Data []todo.TodoList `json:"data"`
 }
 
 func (h *Handler) getAllLists(c *gin.Context) {
@@ -101,6 +101,7 @@ func (h *Handler) updateList(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{
 		Status: "OK",
 	})
+
 }
 
 func (h *Handler) deleteList(c *gin.Context) {
